@@ -1,0 +1,22 @@
+.myInput1{
+    border: none !important;
+    outline-style: none;
+    width: 81% !important;
+    
+}
+.myBtn{
+
+    
+    padding-left: 2px;
+    font-size: 25px;
+    color: #6ab04c;
+    cursor: pointer;
+}
+body{
+    background-color: #7ed6df;
+    
+}
+h1{
+    color: #eb4d4b;
+    text-shadow: 2px 1px black;
+}
