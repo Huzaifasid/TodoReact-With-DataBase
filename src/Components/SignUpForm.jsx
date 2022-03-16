@@ -4,6 +4,9 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import Loader from "./Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router";
+
+
 
 const SignUpForm = () => {
   const [userName, setUserName] = useState("");
@@ -11,6 +14,7 @@ const SignUpForm = () => {
   const [password, setPass] = useState("");
   const [spinner, setSpinner] = useState("Signup");
 
+  const navigate = useNavigate()
   const getData = (e) => {
     e.preventDefault();
     console.log(userName, email, password);
@@ -18,6 +22,8 @@ const SignUpForm = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result);
+        navigate('/login')
+        
       })
       .catch((error) => {
         console.log(error);
@@ -31,7 +37,8 @@ const SignUpForm = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    });
+    })
+    
   };
 
   return (

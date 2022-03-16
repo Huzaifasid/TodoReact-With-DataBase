@@ -4,27 +4,28 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Loader from "./Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [spinner, setSpinner] = useState("Login");
-
+  const navigate = useNavigate()
   const auth = getAuth();
   const getData = (e) => {
     e.preventDefault()
     console.log(email, password);
 
-
     signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
+  
+    .then((result) => {
+      const user = result.user;
+      navigate('/todo')
+      console.log(user);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
     setSpinner(<Loader />);
     toast.success("Login Successfully", {
       position: "top-center",
@@ -35,6 +36,11 @@ const LoginForm = () => {
       draggable: true,
       progress: undefined,
     });
+
+
+   
+
+   
   };
 
   return (
